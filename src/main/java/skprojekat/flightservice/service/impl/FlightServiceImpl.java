@@ -20,5 +20,8 @@ public class FlightServiceImpl implements FlightService{
 		flightRepo.save(new Flight());
 		
 	}
+	
+	//ooooovo je srbija pusi kurac
 
+	
 }
