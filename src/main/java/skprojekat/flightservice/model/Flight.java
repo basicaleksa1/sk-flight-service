@@ -6,38 +6,52 @@ import javax.persistence.*;
 public class Flight {
 
 	@Id
-	private int id;
-	@Column
-	private String plane;
-	@Column
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	@Column(columnDefinition="TEXT", length=20)
+	private Plane plane;
+	@Column(columnDefinition="TEXT", length=30)
 	private String departure;
-	@Column
+	@Column(columnDefinition="TEXT", length=30)
 	private String destination;
-	@Column
-	private String price;
-	
+	@Column(columnDefinition="Decimal(10,2) default '100.00'")
+	private Double price;
+	@Column(columnDefinition="Decimal(10,2) default '100.00'")
+	private Double flightDurHrs;
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Integer getId() {
 		return id;
+	}
+	/**
+	 * @return the flightDurHrs
+	 */
+	public Double getFlightDurHrs() {
+		return flightDurHrs;
+	}
+	/**
+	 * @param flightDurHrs the flightDurHrs to set
+	 */
+	public void setFlightDurHrs(Double flightDurHrs) {
+		this.flightDurHrs = flightDurHrs;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	/**
 	 * @return the plane
 	 */
-	public String getPlane() {
+	public Plane getPlane() {
 		return plane;
 	}
 	/**
 	 * @param plane the plane to set
 	 */
-	public void setPlane(String plane) {
+	public void setPlane(Plane plane) {
 		this.plane = plane;
 	}
 	/**
@@ -67,15 +81,14 @@ public class Flight {
 	/**
 	 * @return the price
 	 */
-	public String getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 	/**
 	 * @param price the price to set
 	 */
-	public void setPrice(String price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
-	
 	
 }
