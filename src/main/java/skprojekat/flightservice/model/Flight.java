@@ -8,7 +8,7 @@ public class Flight {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(columnDefinition="TEXT", length=20)
+	@OneToOne(optional=false)
 	private Plane plane;
 	@Column(columnDefinition="TEXT", length=30)
 	private String departure;

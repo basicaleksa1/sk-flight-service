@@ -1,16 +1,18 @@
 package skprojekat.flightservice.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+@Entity
 public class Plane {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer planeId;
+	private Integer id;
 	
 	@OneToOne(optional=true) 
 	private Flight flight;
@@ -25,14 +27,14 @@ public class Plane {
 	 * @return the planeId
 	 */
 	public Integer getPlaneId() {
-		return planeId;
+		return id;
 	}
 
 	/**
 	 * @param planeId the planeId to set
 	 */
-	public void setPlaneId(Integer planeId) {
-		this.planeId = planeId;
+	public void setPlaneId(Integer id) {
+		this.id = id;
 	}
 
 	/**
