@@ -1,48 +1,25 @@
 package skprojekat.flightservice.dto;
 
-public class FlightDto {
+import skprojekat.flightservice.model.Plane;
 
-	private Integer id;
-	private String planeName;
+public class FlightCreateDto {
+
+	private Plane plane;
 	private String departure;
 	private String destination;
 	private Double price;
 	private Double flightDurHrs;
 	/**
-	 * @return the flightDurHrs
+	 * @return the plane
 	 */
-	public Double getFlightDurHrs() {
-		return flightDurHrs;
+	public Plane getPlane() {
+		return plane;
 	}
 	/**
-	 * @param flightDurHrs the flightDurHrs to set
+	 * @param plane the plane to set
 	 */
-	public void setFlightDurHrs(Double flightDurHrs) {
-		this.flightDurHrs = flightDurHrs;
-	}
-	/**
-	 * @return the id
-	 */
-	public Integer getId() {
-		return id;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	/**
-	 * @return the planeName
-	 */
-	public String getPlaneName() {
-		return planeName;
-	}
-	/**
-	 * @param planeName the planeName to set
-	 */
-	public void setPlaneName(String planeName) {
-		this.planeName = planeName;
+	public void setPlane(Plane plane) {
+		this.plane = plane;
 	}
 	/**
 	 * @return the departure
@@ -80,5 +57,18 @@ public class FlightDto {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+	/**
+	 * @return the flightDurHrs
+	 */
+	public Double getFlightDurHrs() {
+		return flightDurHrs;
+	}
+	/**
+	 * @param flightDurHrs the flightDurHrs to set
+	 */
+	public void setFlightDurHrs(Double flightDurHrs) {
+		this.flightDurHrs = flightDurHrs;
+	}
+	
 	
 }

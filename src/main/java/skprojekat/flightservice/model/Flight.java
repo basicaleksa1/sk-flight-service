@@ -10,13 +10,13 @@ public class Flight {
 	private Integer id;
 	@OneToOne(optional=false)
 	private Plane plane;
-	@Column(columnDefinition="TEXT", length=30)
+	@Column(columnDefinition="TEXT", length=30, nullable=false)
 	private String departure;
-	@Column(columnDefinition="TEXT", length=30)
+	@Column(columnDefinition="TEXT", length=30, nullable=false)
 	private String destination;
-	@Column(columnDefinition="Decimal(10,2) default '100.00'")
+	@Column(columnDefinition="Decimal(10,2) default '100.00'", nullable=false)
 	private Double price;
-	@Column(columnDefinition="Decimal(10,2) default '100.00'")
+	@Column(columnDefinition="Decimal(10,2) default '100.00'", nullable=false)
 	private Double flightDurHrs;
 	/**
 	 * @return the id

@@ -17,7 +17,7 @@ public class Plane {
 	@OneToOne(optional=true) 
 	private Flight flight;
 	
-	@Column(columnDefinition="TEXT", length=20)
+	@Column(columnDefinition="TEXT", length=20, nullable=false)
 	private String name;
 	
 	@Column(nullable=false, columnDefinition="int default 100")
@@ -26,14 +26,14 @@ public class Plane {
 	/**
 	 * @return the planeId
 	 */
-	public Integer getPlaneId() {
+	public Integer getId() {
 		return id;
 	}
 
 	/**
 	 * @param planeId the planeId to set
 	 */
-	public void setPlaneId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
