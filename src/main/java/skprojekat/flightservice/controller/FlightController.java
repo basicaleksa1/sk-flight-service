@@ -29,7 +29,6 @@ public class FlightController {
 	}
 	
 	@ApiOperation(value = "Get all flights")
-	
 	@GetMapping
 	public ResponseEntity<Page<FlightDto>> findAll(@ApiIgnore Pageable pageable){
 		return new ResponseEntity<>(service.findAll(pageable), HttpStatus.OK);

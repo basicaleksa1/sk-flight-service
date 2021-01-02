@@ -1,9 +1,12 @@
 package skprojekat.flightservice.mapper;
 
+import org.springframework.stereotype.Component;
+
 import skprojekat.flightservice.dto.PlaneCreateDto;
 import skprojekat.flightservice.dto.PlaneDto;
 import skprojekat.flightservice.model.Plane;
 
+@Component
 public class PlaneMapper {
 
 	public PlaneDto PlaneToPlaneDto(Plane plane) {
