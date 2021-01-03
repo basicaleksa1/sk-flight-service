@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import skprojekat.flightservice.dto.FlightCreateDto;
 import skprojekat.flightservice.dto.FlightDto;
 import skprojekat.flightservice.mapper.FlightMapper;
+import skprojekat.flightservice.model.Plane;
 import skprojekat.flightservice.repository.FlightRepository;
+import skprojekat.flightservice.repository.PlaneRepository;
 import skprojekat.flightservice.service.FlightService;
 
 @Service
@@ -15,10 +17,12 @@ public class FlightServiceImpl implements FlightService{
 
 	private FlightRepository flightRepo;
 	private FlightMapper flightMapper;
+	private PlaneRepository planeRepo;
 	
-	public FlightServiceImpl(FlightRepository flightRepo, FlightMapper flightMapper) {
+	public FlightServiceImpl(FlightRepository flightRepo, FlightMapper flightMapper, PlaneRepository planeRepo) {
 		this.flightRepo = flightRepo;
 		this.flightMapper = flightMapper;
+		this.planeRepo = planeRepo;
 	}
 
 	@Override
@@ -36,9 +40,12 @@ public class FlightServiceImpl implements FlightService{
 	}
 
 	@Override
-	public FlightDto add(FlightCreateDto flightCreateDto) {
+	public FlightDto add(FlightCreateDto flightCreateDto, Integer planeId) {
+		Plane plane = this.planeRepo.findById(planeId).orElseThrow();
+		System.out.println(plane);
+		System.out.println("paradajz");
 		return flightMapper.flightToFlightDto(flightRepo
-				.save(flightMapper.filghtCreateDtoToFlight(flightCreateDto)));
+				.save(flightMapper.filghtCreateDtoToFlight(flightCreateDto, plane)));
 	}
 
 	@Override

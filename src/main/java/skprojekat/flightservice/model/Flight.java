@@ -8,7 +8,7 @@ public class Flight {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@OneToOne(optional=false)
+	@ManyToOne
 	private Plane plane;
 	@Column(columnDefinition="TEXT", length=30, nullable=false)
 	private String departure;
@@ -18,6 +18,20 @@ public class Flight {
 	private Double price;
 	@Column(columnDefinition="Decimal(10,2) default '100.00'", nullable=false)
 	private Double flightDurHrs;
+	@Column(nullable=false, columnDefinition="int default 0")
+	private Integer capacity;
+	/**
+	 * @return the capacity
+	 */
+	public Integer getCapacity() {
+		return capacity;
+	}
+	/**
+	 * @param capacity the capacity to set
+	 */
+	public void setCapacity(Integer capacity) {
+		this.capacity = capacity;
+	}
 	/**
 	 * @return the id
 	 */

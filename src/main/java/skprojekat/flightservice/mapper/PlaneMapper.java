@@ -13,7 +13,6 @@ public class PlaneMapper {
 		PlaneDto planeDto = new PlaneDto();
 		planeDto.setId(plane.getId());
 		planeDto.setCapacity(plane.getCapacity());
-		planeDto.setFlight(plane.getFlight());
 		planeDto.setName(plane.getName());
 		return planeDto;
 	}

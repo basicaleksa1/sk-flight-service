@@ -1,13 +1,11 @@
 package skprojekat.flightservice.dto;
 
-import skprojekat.flightservice.model.Flight;
 
 public class PlaneDto {
 
 	private Integer id;
 	private String name;
 	private Integer capacity;
-	private Flight flight;
 	/**
 	 * @return the id
 	 */
@@ -43,18 +41,6 @@ public class PlaneDto {
 	 */
 	public void setCapacity(Integer capacity) {
 		this.capacity = capacity;
-	}
-	/**
-	 * @return the flight
-	 */
-	public Flight getFlight() {
-		return flight;
-	}
-	/**
-	 * @param flight the flight to set
-	 */
-	public void setFlight(Flight flight) {
-		this.flight = flight;
 	}
 	
 }

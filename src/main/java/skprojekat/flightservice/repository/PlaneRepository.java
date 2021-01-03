@@ -9,5 +9,6 @@ import skprojekat.flightservice.model.Plane;
 public interface PlaneRepository extends JpaRepository<Plane, Integer>{
 
 //	void deleteByIdWhereFlightIdIsNull(Integer id);
+	
 	void deleteById(Integer id);
 }

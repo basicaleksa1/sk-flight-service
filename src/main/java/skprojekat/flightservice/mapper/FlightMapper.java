@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import skprojekat.flightservice.dto.FlightCreateDto;
 import skprojekat.flightservice.dto.FlightDto;
 import skprojekat.flightservice.model.Flight;
+import skprojekat.flightservice.model.Plane;
 
 @Component
 public class FlightMapper {
@@ -20,13 +21,14 @@ public class FlightMapper {
 		return flightDto;
 	}
 	
-	public Flight filghtCreateDtoToFlight(FlightCreateDto flightCD) {
+	public Flight filghtCreateDtoToFlight(FlightCreateDto flightCD, Plane plane) {
 		Flight flight = new Flight();
 		flight.setDeparture(flightCD.getDeparture());
 		flight.setDestination(flightCD.getDestination());
-		flight.setPlane(flightCD.getPlane());
+		flight.setPlane(plane);
 		flight.setPrice(flightCD.getPrice());
 		flight.setFlightDurHrs(flightCD.getFlightDurHrs());
+		flight.setCapacity(flightCD.getCapacity());
 		return flight;
 	}
 }

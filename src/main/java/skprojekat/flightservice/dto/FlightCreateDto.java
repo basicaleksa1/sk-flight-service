@@ -1,25 +1,25 @@
 package skprojekat.flightservice.dto;
 
-import skprojekat.flightservice.model.Plane;
 
 public class FlightCreateDto {
 
-	private Plane plane;
 	private String departure;
 	private String destination;
 	private Double price;
 	private Double flightDurHrs;
+	private Integer capacity;
+
 	/**
-	 * @return the plane
+	 * @return the capacity
 	 */
-	public Plane getPlane() {
-		return plane;
+	public Integer getCapacity() {
+		return capacity;
 	}
 	/**
-	 * @param plane the plane to set
+	 * @param capacity the capacity to set
 	 */
-	public void setPlane(Plane plane) {
-		this.plane = plane;
+	public void setCapacity(Integer capacity) {
+		this.capacity = capacity;
 	}
 	/**
 	 * @return the departure

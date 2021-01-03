@@ -35,8 +35,8 @@ public class FlightController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<FlightDto> add(@RequestBody FlightCreateDto flightCreateDto){
-		return new ResponseEntity<>(service.add(flightCreateDto), HttpStatus.CREATED);
+	public ResponseEntity<FlightDto> add(@RequestBody FlightCreateDto flightCreateDto, Integer id){
+		return new ResponseEntity<>(service.add(flightCreateDto, id), HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/{id}")

@@ -1,11 +1,13 @@
 package skprojekat.flightservice.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Plane {
@@ -14,8 +16,8 @@ public class Plane {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToOne(optional=true) 
-	private Flight flight;
+	@OneToMany(mappedBy="plane")
+	private List<Flight> flight;
 	
 	@Column(columnDefinition="TEXT", length=20, nullable=false)
 	private String name;
@@ -24,14 +26,14 @@ public class Plane {
 	private Integer capacity;
 
 	/**
-	 * @return the planeId
+	 * @return the id
 	 */
 	public Integer getId() {
 		return id;
 	}
 
 	/**
-	 * @param planeId the planeId to set
+	 * @param id the id to set
 	 */
 	public void setId(Integer id) {
 		this.id = id;
@@ -40,14 +42,14 @@ public class Plane {
 	/**
 	 * @return the flight
 	 */
-	public Flight getFlight() {
+	public List<Flight> getFlight() {
 		return flight;
 	}
 
 	/**
 	 * @param flight the flight to set
 	 */
-	public void setFlight(Flight flight) {
+	public void setFlight(List<Flight> flight) {
 		this.flight = flight;
 	}
 
@@ -78,5 +80,6 @@ public class Plane {
 	public void setCapacity(Integer capacity) {
 		this.capacity = capacity;
 	}
+
 	
 }
