@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import skprojekat.flightservice.dto.PlaneCreateDto;
 import skprojekat.flightservice.dto.PlaneDto;
 import skprojekat.flightservice.security.CheckSecurity;
+import skprojekat.flightservice.service.FlightService;
 import skprojekat.flightservice.service.PlaneService;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -22,9 +23,11 @@ import springfox.documentation.annotations.ApiIgnore;
 public class PlaneController {
 	
 	private PlaneService planeService;
+	private FlightService flightService;
 	
-	public PlaneController(PlaneService planeService) {
+	public PlaneController(PlaneService planeService, FlightService flightService) {
 		this.planeService = planeService;
+		this.flightService = flightService;
 	}
 
 	@GetMapping

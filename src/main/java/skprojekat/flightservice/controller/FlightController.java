@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.ApiOperation;
 import skprojekat.flightservice.dto.FlightCreateDto;
 import skprojekat.flightservice.dto.FlightDto;
+import skprojekat.flightservice.security.CheckSecurity;
 import skprojekat.flightservice.service.FlightService;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -35,11 +36,13 @@ public class FlightController {
 	}
 	
 	@PostMapping
+	@CheckSecurity(roles = {"ROLE_ADMIN"})
 	public ResponseEntity<FlightDto> add(@RequestBody FlightCreateDto flightCreateDto, Integer id){
 		return new ResponseEntity<>(service.add(flightCreateDto, id), HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/{id}")
+	@CheckSecurity(roles = {"ROLE_ADMIN"})
 	public ResponseEntity<?> delete(@PathVariable("id") Integer id){
 		service.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
