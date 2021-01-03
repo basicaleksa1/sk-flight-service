@@ -6,11 +6,16 @@ import org.springframework.stereotype.Service;
 
 import skprojekat.flightservice.dto.FlightCreateDto;
 import skprojekat.flightservice.dto.FlightDto;
+import skprojekat.flightservice.model.Flight;
+
+import java.util.Optional;
 
 @Service
 public interface FlightService {
 
 	Page<FlightDto> findAll(Pageable pageable);
+
+	Optional<Flight> findByPlane_Id(Integer id);
 	
 	FlightDto findById(Integer id);	
 	

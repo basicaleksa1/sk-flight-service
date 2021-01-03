@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import skprojekat.flightservice.dto.PlaneCreateDto;
 import skprojekat.flightservice.dto.PlaneDto;
+import skprojekat.flightservice.model.Flight;
 import skprojekat.flightservice.security.CheckSecurity;
 import skprojekat.flightservice.service.FlightService;
 import skprojekat.flightservice.service.PlaneService;
 import springfox.documentation.annotations.ApiIgnore;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/plane")
@@ -36,11 +39,11 @@ public class PlaneController {
 		return new ResponseEntity<>(planeService.findAll(pageable), HttpStatus.OK);
 	}
 
-//	@GetMapping
-//	@CheckSecurity(roles = {"ROLE_USER", "ROLE_ADMIN"})
-//	public ResponseEntity<PlaneDto> findById(@RequestHeader("Authorization") String authorization, Integer id){
-//		return new ResponseEntity<>(planeService.findById(id), HttpStatus.OK);
-//	}
+	@GetMapping("/id")
+	@CheckSecurity(roles = {"ROLE_USER", "ROLE_ADMIN"})
+	public ResponseEntity<PlaneDto> findById(@RequestHeader("Authorization") String authorization, Integer id){
+		return new ResponseEntity<>(planeService.findById(id), HttpStatus.OK);
+	}
 	
 	@PostMapping
 	@CheckSecurity(roles = {"ROLE_ADMIN"})
@@ -51,6 +54,9 @@ public class PlaneController {
 	@DeleteMapping("/id")
 	@CheckSecurity(roles = {"ROLE_ADMIN"})
 	public ResponseEntity<PlaneDto> delete(@RequestHeader("Authorization") String authorization, Integer id) {
+		Optional<Flight> flights = flightService.findByPlane_Id(id);
+		if(flights.isPresent())
+			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		planeService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

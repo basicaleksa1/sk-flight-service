@@ -7,10 +7,13 @@ import org.springframework.stereotype.Service;
 import skprojekat.flightservice.dto.FlightCreateDto;
 import skprojekat.flightservice.dto.FlightDto;
 import skprojekat.flightservice.mapper.FlightMapper;
+import skprojekat.flightservice.model.Flight;
 import skprojekat.flightservice.model.Plane;
 import skprojekat.flightservice.repository.FlightRepository;
 import skprojekat.flightservice.repository.PlaneRepository;
 import skprojekat.flightservice.service.FlightService;
+
+import java.util.Optional;
 
 @Service
 public class FlightServiceImpl implements FlightService{
@@ -29,6 +32,11 @@ public class FlightServiceImpl implements FlightService{
 	public Page<FlightDto> findAll(Pageable pageable) {
 		return flightRepo.findAll(pageable)
 				.map(flightMapper::flightToFlightDto);
+	}
+
+	@Override
+	public Optional<Flight> findByPlane_Id(Integer id) {
+		return flightRepo.findByPlane_Id(id);
 	}
 
 	@Override

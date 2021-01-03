@@ -12,4 +12,6 @@ public interface FlightRepository extends JpaRepository<Flight, Integer>{
 
 	void deleteById(Integer id);
 
+	Optional<Flight> findByPlane_Id(Integer id);
+
 }
