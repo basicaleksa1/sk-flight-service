@@ -7,11 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import skprojekat.flightservice.dto.PlaneCreateDto;
 import skprojekat.flightservice.dto.PlaneDto;
+import skprojekat.flightservice.security.CheckSecurity;
 import skprojekat.flightservice.service.PlaneService;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -26,19 +28,27 @@ public class PlaneController {
 	}
 
 	@GetMapping
-	public ResponseEntity<Page<PlaneDto>> findAll(@ApiIgnore Pageable pageable){
+	@CheckSecurity(roles = {"ROLE_USER", "ROLE_ADMIN"})
+	public ResponseEntity<Page<PlaneDto>> findAll(@RequestHeader("Authorization") String authorization, @ApiIgnore Pageable pageable){
 		return new ResponseEntity<>(planeService.findAll(pageable), HttpStatus.OK);
 	}
 
+//	@GetMapping
+//	@CheckSecurity(roles = {"ROLE_USER", "ROLE_ADMIN"})
+//	public ResponseEntity<PlaneDto> findById(@RequestHeader("Authorization") String authorization, Integer id){
+//		return new ResponseEntity<>(planeService.findById(id), HttpStatus.OK);
+//	}
+	
 	@PostMapping
-	public ResponseEntity<PlaneDto> add(PlaneCreateDto planeCreateDto){
+	@CheckSecurity(roles = {"ROLE_ADMIN"})
+	public ResponseEntity<PlaneDto> add(@RequestHeader("Authorization") String authorization, PlaneCreateDto planeCreateDto){
 		return new ResponseEntity<>(planeService.add(planeCreateDto), HttpStatus.CREATED);
 	}
 	
-	@SuppressWarnings("unchecked")
 	@DeleteMapping("/id")
-	public ResponseEntity<PlaneDto> delete(Integer id) {
+	@CheckSecurity(roles = {"ROLE_ADMIN"})
+	public ResponseEntity<PlaneDto> delete(@RequestHeader("Authorization") String authorization, Integer id) {
 		planeService.deleteById(id);
-		return new ResponseEntity(HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }
