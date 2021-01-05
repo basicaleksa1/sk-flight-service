@@ -16,7 +16,7 @@ public class FlightMapper {
 		flightDto.setDeparture(flight.getDeparture());
 		flightDto.setDestination(flight.getDestination());
 		flightDto.setPrice(flight.getPrice());
-		flightDto.setFlightDurHrs(flight.getFlightDurHrs());
+		flightDto.setDistance(flight.getDistance());
 		flightDto.setPlaneName(flight.getPlane().getName());
 		return flightDto;
 	}
@@ -27,8 +27,9 @@ public class FlightMapper {
 		flight.setDestination(flightCD.getDestination());
 		flight.setPlane(plane);
 		flight.setPrice(flightCD.getPrice());
-		flight.setFlightDurHrs(flightCD.getFlightDurHrs());
+		flight.setDistance(flightCD.getDistance());
 		flight.setCapacity(flightCD.getCapacity());
+		flight.setStatus("ACTIVE");
 		return flight;
 	}
 }

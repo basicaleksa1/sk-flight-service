@@ -25,6 +25,15 @@ public class Plane {
 	@Column(nullable=false, columnDefinition="int default 100")
 	private Integer capacity;
 
+	public Plane(String name, Integer capacity){
+		this.capacity = capacity;
+		this.name = name;
+	}
+
+	public Plane(){
+
+	}
+
 	/**
 	 * @return the id
 	 */

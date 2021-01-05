@@ -15,9 +15,20 @@ public interface FlightService {
 
 	Page<FlightDto> findAll(Pageable pageable);
 
+	Page<FlightDto> findAllByDepartureAndDestinationAndPrice(Pageable pageable,
+															 String departure,
+															 String destination,
+															 Double price);
+
+	Page<FlightDto> findAllByDeparture(Pageable pageable, String departure);
+
+	Page<FlightDto> findAllByDepartureAndDestination(Pageable pageable, String departure, String destination);
+
 	Optional<Flight> findByPlane_Id(Integer id);
 	
-	FlightDto findById(Integer id);	
+	FlightDto findById(Integer id);
+
+	void updateCapacity(Integer id);
 	
 	void deleteById(Integer id); // mozda bi trebalo da vraca objekat koji je obrisao zbog toga sto posle moramo preko message broker da vidimo 
 

@@ -17,9 +17,20 @@ public class Flight {
 	@Column(columnDefinition="Decimal(10,2) default '100.00'", nullable=false)
 	private Double price;
 	@Column(columnDefinition="Decimal(10,2) default '100.00'", nullable=false)
-	private Double flightDurHrs;
+	private Double distance;
 	@Column(nullable=false, columnDefinition="int default 0")
 	private Integer capacity;
+	@Column(nullable=false)
+	private String status;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	/**
 	 * @return the capacity
 	 */
@@ -41,14 +52,14 @@ public class Flight {
 	/**
 	 * @return the flightDurHrs
 	 */
-	public Double getFlightDurHrs() {
-		return flightDurHrs;
+	public Double getDistance() {
+		return distance;
 	}
 	/**
 	 * @param flightDurHrs the flightDurHrs to set
 	 */
-	public void setFlightDurHrs(Double flightDurHrs) {
-		this.flightDurHrs = flightDurHrs;
+	public void setDistance(Double flightDurHrs) {
+		this.distance = flightDurHrs;
 	}
 	/**
 	 * @param id the id to set

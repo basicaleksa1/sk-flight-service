@@ -54,9 +54,9 @@ public class PlaneController {
 	@DeleteMapping("/id")
 	@CheckSecurity(roles = {"ROLE_ADMIN"})
 	public ResponseEntity<PlaneDto> delete(@RequestHeader("Authorization") String authorization, Integer id) {
-		Optional<Flight> flights = flightService.findByPlane_Id(id);
-		if(flights.isPresent())
-			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+//		Optional<Flight> flights = flightService.findByPlane_Id(id);
+//		if(flights.isPresent())
+//			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		planeService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

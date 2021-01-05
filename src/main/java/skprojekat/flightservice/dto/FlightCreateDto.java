@@ -6,7 +6,7 @@ public class FlightCreateDto {
 	private String departure;
 	private String destination;
 	private Double price;
-	private Double flightDurHrs;
+	private Double distance;
 	private Integer capacity;
 
 	/**
@@ -60,14 +60,14 @@ public class FlightCreateDto {
 	/**
 	 * @return the flightDurHrs
 	 */
-	public Double getFlightDurHrs() {
-		return flightDurHrs;
+	public Double getDistance() {
+		return distance;
 	}
 	/**
-	 * @param flightDurHrs the flightDurHrs to set
+	 * @param distance the flightDurHrs to set
 	 */
-	public void setFlightDurHrs(Double flightDurHrs) {
-		this.flightDurHrs = flightDurHrs;
+	public void setDistance(Double distance) {
+		this.distance = distance;
 	}
 	
 	
