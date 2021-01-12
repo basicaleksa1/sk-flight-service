@@ -109,10 +109,10 @@ public class FlightServiceImpl implements FlightService{
 	}
 
 	@Override
-	public void updateCapacity(Integer id) {
+	public FlightDto updateCapacity(Integer id) {
 		Flight flight = flightRepo.findById(id).orElseThrow();
 		flight.setCapacity(flight.getCapacity() + 1);
 		flightRepo.save(flight);
-
+		return flightMapper.flightToFlightDto(flight);
 	}
 }

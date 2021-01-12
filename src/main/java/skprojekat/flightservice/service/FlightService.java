@@ -28,7 +28,7 @@ public interface FlightService {
 	
 	FlightDto findById(Integer id);
 
-	void updateCapacity(Integer id);
+	FlightDto updateCapacity(Integer id);
 	
 	void deleteById(Integer id); // mozda bi trebalo da vraca objekat koji je obrisao zbog toga sto posle moramo preko message broker da vidimo 
 

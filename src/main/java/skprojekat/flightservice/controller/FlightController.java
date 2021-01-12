@@ -59,9 +59,8 @@ public class FlightController {
 	}
 
 	@PutMapping("/{id}")
-	@CheckSecurity(roles = {"ROLE_ADMIN"})
-	public ResponseEntity<?> updateCapacity(@PathVariable Integer id) {
-		flightService.updateCapacity(id);
-		return new ResponseEntity<>(HttpStatus.OK);
+//	@CheckSecurity(roles = {"ROLE_ADMIN"})
+	public ResponseEntity<FlightDto> updateCapacity(@PathVariable Integer id) {
+		return new ResponseEntity<FlightDto>(flightService.updateCapacity(id), HttpStatus.OK);
 	}
 }
